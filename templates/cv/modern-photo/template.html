@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!--
+  ===========================================================================
+  CV TEMPLATE — modern-photo
+  ---------------------------------------------------------------------------
+  Edit the CONTENT (text inside [BRACKETS]). Do not touch the <style> block
+  unless the layout itself needs to change.
+
+  Structure: every section is <section class="sec"> with an <h2>.
+  Reorder sections by moving the whole <section> block. Delete a section by
+  deleting the block (nothing else references it). Duplicate an <div class="entry">
+  or grid cell to add more rows — the CSS (flexbox/grid) reflows automatically.
+
+  Render with: python3 build.py <this-file>.html <output>.pdf
+  ===========================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  /* ---------- fonts ---------- */
+  @font-face { font-family:'Source Sans Pro'; font-weight:400; font-style:normal;
+               src:url('fonts/source-sans-pro-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family:'Source Sans Pro'; font-weight:400; font-style:italic;
+               src:url('fonts/source-sans-pro-latin-400-italic.woff2') format('woff2'); }
+  @font-face { font-family:'Source Sans Pro'; font-weight:600; font-style:normal;
+               src:url('fonts/source-sans-pro-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family:'Source Sans Pro'; font-weight:700; font-style:normal;
+               src:url('fonts/source-sans-pro-latin-700-normal.woff2') format('woff2'); }
+
+  /* ---------- design tokens ---------- */
+  :root {
+    --accent:  #0E374E;   /* headings, name, rules, chips  */
+    --ink:     #000000;   /* body text                     */
+    --rule:    0.7pt;     /* section underline thickness   */
+    --body:    9pt;
+    --lh:      1.11;      /* 10pt line-height on 9pt text  */
+  }
+
+  @page { size: A4; margin: 28.5pt; }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family:'Source Sans Pro', 'Noto Sans', sans-serif;
+    font-size: var(--body);
+    line-height: var(--lh);
+    color: var(--ink);
+    -weasy-hyphens: none;
+    font-kerning: none;           /* kerned pairs split words in the PDF text layer ("ASP .NET") - see TEMPLATE.md */
+    font-variant-ligatures: none;
+  }
+
+  /* ---------- header ---------- */
+  .header { display:flex; gap:17.8pt; align-items:flex-start; margin-bottom:10pt; }
+  .photo  { width:97.5pt; height:97.5pt; border-radius:50%; object-fit:cover; flex:none; }
+  .ident  { padding-top:0; }
+  .name   { font-size:23.5pt; font-weight:700; color:var(--accent); line-height:1.05;
+            letter-spacing:-0.2pt; }
+  .role   { font-size:15.9pt; font-style:italic; color:var(--accent); line-height:1.15;
+            margin-top:2pt; }
+
+  .contact { margin-top:8pt; font-size:var(--body); }
+  .contact .row { display:flex; flex-wrap:wrap; gap:4pt 20pt; margin-bottom:8pt; }
+  .contact .item { display:flex; align-items:center; gap:4.5pt; white-space:nowrap; }
+  .contact svg { width:8.5pt; height:8.5pt; flex:none; }
+
+  /* ---------- sections ---------- */
+  .sec { margin-bottom:7.5pt; }
+  .sec h2 {
+    font-size:10pt; font-weight:700; text-transform:uppercase; letter-spacing:0.35pt;
+    color:var(--ink); padding-bottom:1.5pt; margin-bottom:2.5pt;
+    border-bottom:var(--rule) solid var(--accent);
+  }
+
+  /* ---------- entries (experience / education) ---------- */
+  .entry { margin-bottom:5pt; }
+  .entry:last-child { margin-bottom:0; }
+  .entry .head { display:flex; justify-content:space-between; align-items:baseline; gap:10pt; }
+  .entry .left  { flex:1; }
+  .entry .right { text-align:right; white-space:nowrap; }
+  .org  { font-weight:700; }
+  .pos  { font-style:italic; }
+
+  ul { list-style:none; margin-top:0; }
+  li { padding-left:8pt; text-indent:-8pt; }
+  li::before { content:'•  '; }
+
+  /* ---------- skills grid ---------- */
+  .skills { display:grid; grid-template-columns:repeat(4, 1fr); gap:7pt 12pt;
+            align-content:start; }
+  .skills .cat { font-weight:700; margin-bottom:0.5pt; }
+
+  /* ---------- certification chips ---------- */
+  .chips { display:flex; flex-wrap:wrap; gap:5pt; }
+  .chip  { background:var(--accent); color:#fff; font-weight:700;
+           padding:3.5pt 7pt; border-radius:3pt; }
+
+  /* ---------- languages ---------- */
+  .langs { display:grid; grid-template-columns:repeat(3, 1fr); gap:12pt; }
+  .langs .lang { font-weight:700; }
+</style>
+</head>
+<body>
+
+<!-- ======================= HEADER ======================= -->
+<div class="header">
+  <img class="photo" src="[YOUR_PHOTO_PATH]" alt="">
+  <div class="ident">
+    <div class="name">[YOUR_NAME]</div>
+    <!-- TAILOR: match this line to the job title in the offer -->
+    <div class="role">[YOUR_HEADLINE]</div>
+
+    <div class="contact">
+      <div class="row">
+        <span class="item">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          [YOUR_EMAIL]</span>
+        <span class="item">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg>
+          [YOUR_PHONE]</span>
+        <span class="item">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 00-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
+          [YOUR_LOCATION]</span>
+      </div>
+      <div class="row">
+        <span class="item">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM8.3 18.3H5.7V9.8h2.6v8.5zM7 8.6a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm11.3 9.7h-2.6v-4.1c0-1-.4-1.7-1.3-1.7-.7 0-1.1.5-1.3 1-.1.2-.1.4-.1.7v4.1h-2.6s0-6.9 0-8.5h2.6v1.2c.3-.5 1-1.3 2.4-1.3 1.8 0 3 1.2 3 3.7v4.9z"/></svg>
+          [YOUR_LINKEDIN_URL]</span>
+        <span class="item">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 015 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0012 2z"/></svg>
+          [YOUR_GITHUB_URL]</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= PROFILE =======================
+     TAILOR: 2 lines max. Mirror the offer's own vocabulary.
+-->
+<section class="sec">
+  <h2>[PROFILE_SECTION_TITLE]</h2>
+  <p>[YOUR_PROFILE_SUMMARY]</p>
+</section>
+
+<!-- ======================= EXPERIENCE ======================= -->
+<section class="sec">
+  <h2>[EXPERIENCE_SECTION_TITLE]</h2>
+
+  <div class="entry">
+    <div class="head">
+      <div class="left"><span class="org">[COMPANY_1],</span> <span class="pos">[ROLE_1]</span></div>
+      <div class="right">[DATES_1] &nbsp;|&nbsp; [LOCATION_1]</div>
+    </div>
+    <ul>
+      <li>[EXPERIENCE_1_BULLET_1]</li>
+      <li>[EXPERIENCE_1_BULLET_2]</li>
+    </ul>
+  </div>
+
+  <!-- Duplicate this .entry block for each additional role -->
+  <div class="entry">
+    <div class="head">
+      <div class="left"><span class="org">[COMPANY_2],</span> <span class="pos">[ROLE_2]</span></div>
+      <div class="right">[DATES_2] &nbsp;|&nbsp; [LOCATION_2]</div>
+    </div>
+    <ul>
+      <li>[EXPERIENCE_2_BULLET_1]</li>
+      <li>[EXPERIENCE_2_BULLET_2]</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======================= PROJECTS (optional section) ======================= -->
+<section class="sec">
+  <h2>[PROJECTS_SECTION_TITLE]</h2>
+
+  <div class="entry">
+    <div class="head">
+      <div class="left"><span class="org">[PROJECT_1_NAME],</span> <span class="pos">[PROJECT_1_STACK]</span></div>
+      <div class="right">[PROJECT_1_YEAR]</div>
+    </div>
+    <ul><li>[PROJECT_1_BULLET_1]</li></ul>
+  </div>
+</section>
+
+<!-- ======================= SKILLS =======================
+     TAILOR: reorder the cells so the offer's stack sits first.
+     Grid auto-wraps at 4 per row — add or remove cells freely.
+-->
+<section class="sec">
+  <h2>[SKILLS_SECTION_TITLE]</h2>
+  <div class="skills">
+    <div><div class="cat">[SKILL_CATEGORY_1]</div>[SKILL_LIST_1]</div>
+    <div><div class="cat">[SKILL_CATEGORY_2]</div>[SKILL_LIST_2]</div>
+    <div><div class="cat">[SKILL_CATEGORY_3]</div>[SKILL_LIST_3]</div>
+    <div><div class="cat">[SKILL_CATEGORY_4]</div>[SKILL_LIST_4]</div>
+    <!-- Duplicate this div for each additional skill category -->
+    <div><div class="cat">[SKILL_CATEGORY_5]</div>[SKILL_LIST_5]</div>
+  </div>
+</section>
+
+<!-- ======================= EDUCATION ======================= -->
+<section class="sec">
+  <h2>[EDUCATION_SECTION_TITLE]</h2>
+
+  <div class="entry">
+    <div class="head">
+      <div class="left"><span class="org">[DEGREE_1],</span><br><span class="pos">[INSTITUTION_1]</span></div>
+      <div class="right">[EDU_DATES_1] &nbsp;|&nbsp; [EDU_LOCATION_1]</div>
+    </div>
+    <ul>
+      <li>[EDUCATION_1_BULLET_1]</li>
+    </ul>
+  </div>
+
+  <!-- Duplicate this .entry block for each additional degree -->
+</section>
+
+<!-- ======================= CERTIFICATIONS ======================= -->
+<section class="sec">
+  <h2>[CERTIFICATIONS_SECTION_TITLE]</h2>
+  <div class="chips">
+    <span class="chip">[CERTIFICATION_1]</span>
+    <span class="chip">[CERTIFICATION_2]</span>
+    <!-- Duplicate this span for each additional certification -->
+  </div>
+</section>
+
+<!-- ======================= LANGUAGES ======================= -->
+<section class="sec">
+  <h2>[LANGUAGES_SECTION_TITLE]</h2>
+  <div class="langs">
+    <div><div class="lang">[LANGUAGE_1]</div>[LEVEL_1]</div>
+    <div><div class="lang">[LANGUAGE_2]</div>[LEVEL_2]</div>
+    <div><div class="lang">[LANGUAGE_3]</div>[LEVEL_3]</div>
+  </div>
+</section>
+
+</body>
+</html>
