@@ -130,6 +130,7 @@ ALLOWED_IGNORE_NEGATIONS = {
     "!cover_letters/cover_example.tex",
     "!documents/**/.gitkeep",
     "!templates/cv/*/photo_placeholder.jpg",
+    "!.env.example",
 }
 
 # Hook commands the template legitimately ships, as "<Event>:<command>" strings.
